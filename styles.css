@@ -1,1 +1,121 @@
 
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    font-family: 'Bad Script';
+}
+
+/*Columns*/
+.left-column {
+    background-image: linear-gradient(#ebfdde, #d7edc6);
+    float: left;
+    height: 100vh;
+    width: 25vw;
+}
+
+.right-column {
+    background-image: linear-gradient(#ebfdde, #d7edc6);
+    float: right;
+    height: 100vh;
+    width: 25vw;
+}
+
+.game-play {
+    background-image: linear-gradient(#d7edc6, #ebfdde);
+    height: 100vh;
+    width: 50vw;
+    float: inline-start;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/*Players*/
+
+.player-box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.player {
+    font-size: 400%;
+    margin: 0;
+}
+
+.wins {
+    font-size: 300%;
+    margin: 0;
+    color: #7ea462;
+}
+
+/*Gameboard*/
+
+.turns {
+    font-size: 400%;
+    max-height: 20vh;
+    margin-top: 5%;
+    color: #7ea462;
+}
+
+.gameboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 324px;
+    height: 316px;
+    margin: 0;
+    padding: 0;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 4px solid #7ea462;
+    height: 100px;
+    width: 100px;
+    font-size: 18px;
+}
+
+.cell:nth-child(1) {
+    border-top: transparent;
+    border-left: transparent;
+}
+
+.cell:nth-child(2) {
+    border-top: transparent;
+}
+
+.cell:nth-child(3) {
+    border-top: transparent;
+    border-right: transparent;
+}
+
+.cell:nth-child(4) {
+    border-left: transparent;
+}
+
+/* .cell:nth-child(5) {
+    border-left: transparent;
+} */
+
+.cell:nth-child(6) {
+    border-right: transparent;
+}
+
+.cell:nth-child(7) {
+    border-left: transparent;
+    border-bottom: transparent;
+}
+
+.cell:nth-child(8) {
+    border-bottom: transparent;
+}
+
+.cell:nth-child(9) {
+    border-bottom: transparent;
+    border-right: transparent;
+}
