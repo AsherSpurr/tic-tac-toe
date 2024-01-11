@@ -97,5 +97,5 @@ function renderWinner(player) {
 }
 
 function reloadGameboard() {
-
+    x
 }
