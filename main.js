@@ -3,6 +3,8 @@
 
 */
 /* JavaScript */
+// var timeout = setTimeout()
+
 var players = [
     {
         name: 'player1',
@@ -10,6 +12,7 @@ var players = [
         isTurn: false,
         hasWon: false,
         plays: [],
+        wins: 0
     },
     {
         name: 'player2',
@@ -17,6 +20,7 @@ var players = [
         isTurn: true,
         hasWon: false,
         plays: [],
+        wins: 0
     }
 ]
 
@@ -31,10 +35,6 @@ var winningCombos = [
     ['cell3', 'cell5', 'cell7'],
 ]
 
-function playTurn() {
-
-}
-
 /* HTML */
 var turns = document.querySelector('.turns')
 var gameBoard = document.querySelector('.gameboard-container')
@@ -45,39 +45,57 @@ gameBoard.addEventListener('click', (event) => {
 
 function renderCellIcon(event) {
     var event = event.target.closest('div')
-    for(var i = 0; i < players.length; i++) {
-        if(players[i].isTurn === true && event.innerText === '') {
+    for (var i = 0; i < players.length; i++) {
+        if (players[0].hasWon === true || players[1].hasWon === true) {
+            break
+        } //break; //call on declare winner function then break inside that functio call on the reload gameboard
+        if (players[i].isTurn === true && event.innerText === '') {
             event.innerText = `${players[i].icon}`
             players[i].plays.push(event.id)
-            console.log(players[i].plays)
-            // trackScore()
             changeTurn()
-            }
+            trackScore(players[i])
+            
         }
     }
+}
 
 function changeTurn() {
-    for(var i = 0; i < players.length; i++) {
-            players[i].isTurn = !players[i].isTurn
-            renderTurnIcon()
+    for (var i = 0; i < players.length; i++) {
+        players[i].isTurn = !players[i].isTurn
+        renderTurnIcon()
     }
 }
 
 function renderTurnIcon() {
-    for(var i = 0; i < players.length; i++) {
-        if(players[i].isTurn === true) {
-         turns.innerText = `It's ${players[i].icon}'s turn`
+    for (var i = 0; i < players.length; i++) {
+        if (players[i].isTurn === true) {
+            turns.innerText = `It's ${players[i].icon}'s turn`
         }
     }
 }
 
-// function trackScore() {
-//     for(var i = 0; i < players.length; i++) {
-//         for(var i = 0; i < winningCombos.length; i++) {
-//             if(players[i].plays === winningCombos[i]) {
-//                 players[i].hasWon = true
-//                 console.log('you won')
-//             }
-//         }
-//     }
-// }
+function trackScore(player) {
+    for (var i = 0; i < winningCombos.length; i++) {
+        counter = 0;
+        for(var j = 0; j < player.plays.length; j++) {
+            if (winningCombos[i].includes(player.plays[j])) {
+                counter++
+            }
+            if(counter === 3) {
+                player.hasWon = true
+                player.wins++
+                renderWinner(player)
+
+            }
+            if(player.hasWon === true) break;
+        }
+    }
+}
+
+function renderWinner(player) {
+            turns.innerText = `${player.icon} won!`
+}
+
+function reloadGameboard() {
+    x
+}
