@@ -9,49 +9,59 @@ var players = [
         icon: '🌿',
         isTurn: false,
         hasWon: false,
-        id: Date.now(),
+        plays: [],
     },
     {
         name: 'player2',
         icon: '🐛',
         isTurn: true,
         hasWon: false,
-        id: Date.now(),
+        plays: [],
     }
 ]
 
-var gameplay = []
+var winningCombos = [
+    ['cell1', 'cell2', 'cell3'],
+    ['cell4', 'cell5', 'cell6'],
+    ['cell7', 'cell8', 'cell9'],
+    ['cell1', 'cell4', 'cell7'],
+    ['cell2', 'cell5', 'cell8'],
+    ['cell3', 'cell6', 'cell9'],
+    ['cell1', 'cell5', 'cell9'],
+    ['cell3', 'cell5', 'cell7'],
+]
 
-/* Changes isTurn to true or false each time it's called */
-function changeTurn() {
-    for(var i = 0; i < players.length; i++) {
-        players[i].isTurn = !players[i].isTurn
-        renderTurnIcon()
-    }
-}
+function playTurn() {
 
-function trackScore() {
-    
 }
 
 /* HTML */
 var turns = document.querySelector('.turns')
 var gameBoard = document.querySelector('.gameboard-container')
 
-gameBoard.addEventListener('click', (e) => {
-    renderCellIcon(e)
+gameBoard.addEventListener('click', (event) => {
+    renderCellIcon(event)
 });
 
 function renderCellIcon(event) {
     var event = event.target.closest('div')
     for(var i = 0; i < players.length; i++) {
-        if(players[i].isTurn === true) {
+        if(players[i].isTurn === true && event.innerText === '') {
             event.innerText = `${players[i].icon}`
-            // event.id = players[i].id
+            players[i].plays.push(event.id)
+            console.log(players[i].plays)
+            // trackScore()
+            changeTurn()
             }
         }
-        changeTurn()
     }
+
+function changeTurn() {
+    for(var i = 0; i < players.length; i++) {
+            players[i].isTurn = !players[i].isTurn
+            renderTurnIcon()
+    }
+}
 
 function renderTurnIcon() {
     for(var i = 0; i < players.length; i++) {
@@ -60,3 +70,14 @@ function renderTurnIcon() {
         }
     }
 }
+
+// function trackScore() {
+//     for(var i = 0; i < players.length; i++) {
+//         for(var i = 0; i < winningCombos.length; i++) {
+//             if(players[i].plays === winningCombos[i]) {
+//                 players[i].hasWon = true
+//                 console.log('you won')
+//             }
+//         }
+//     }
+// }
