@@ -1,9 +1,6 @@
-/* 
 
-
-*/
 /* JavaScript */
-// var timeout = setTimeout()
+
 
 var players = [
     {
@@ -85,7 +82,7 @@ function trackScore(player) {
                 player.hasWon = true
                 player.wins++
                 renderWinner(player)
-
+                // reloadGameboard()
             }
             if(player.hasWon === true) break;
         }
@@ -96,6 +93,14 @@ function renderWinner(player) {
             turns.innerText = `${player.icon} won!`
 }
 
+setTimeout(reloadGameboard, 4000)
+
 function reloadGameboard() {
-    x
+    for(var i = 0; i < players.length; i++) {
+        if(players[i].hasWon === true) {
+            for(var child of gameBoard.children) {
+                child.innerText = ""
+            }
+        }
+    }
 }
