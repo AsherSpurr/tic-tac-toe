@@ -44,7 +44,6 @@ function renderCellIcon(event) {
     var event = event.target.closest('div')
     for (var i = 0; i < players.length; i++) {
         if (players[0].hasWon === true || players[1].hasWon === true) {
-            // trackScore(players[i])
             break
         }
         if (players[i].isTurn === true && event.innerText === '') {
@@ -113,23 +112,3 @@ function resetInitialValues() {
         }
     }
 }
-
-/*
-Bugs:
-    -GamePlay does not continue after gameBoard reset -- (issue w/ breaks?)
-        - Tried copying and pasting 
-    - Gameboard doesn't reset if leaf won
-        -FIXED -- NOT FIXED AFTER MOST RECENT CHANGES
-        - only allowing recet after caterpillar wins
-    - After a player has won, if a click is made after that, the other player will display as having 
-        won - even after board reset
-        -FIXED added lines 115 - 116 and moved resetInitialValues from inside the if statement to outside
-        -NOT FIXED -- tried mocing the aboce into the if statement and the board won't reload again
-
-    - after CATERPILLAR wins it properly resets and moves to the leave for the next game
-    - after LEAF wins it resets the board BUT the next click displays Ceterpillar won
-        THEN moves to the next play
-
-
-    -2nd playthrough doesn't reset the board
-*/
