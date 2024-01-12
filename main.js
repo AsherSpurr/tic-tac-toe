@@ -35,6 +35,8 @@ var winningCombos = [
 /* HTML */
 var turns = document.querySelector('.turns')
 var gameBoard = document.querySelector('.gameboard-container')
+var winsPlayer1 = document.getElementById('player1-wins')
+var winsPlayer2 = document.getElementById('player2-wins')
 
 gameBoard.addEventListener('click', (event) => {
     renderCellIcon(event)
@@ -51,7 +53,6 @@ function renderCellIcon(event) {
             players[i].plays.push(event.id)
             changeTurn()
             trackScore(players[i])
-            
         }
     }
 }
@@ -82,9 +83,14 @@ function trackScore(player) {
                 player.hasWon = true
                 player.wins++
                 renderWinner(player)
+                renderWins(player)
                 setTimeout(reloadGameboard, 1000)
             }
         }
+    }
+    if(player.plays.length === 5 && !player.hasWon) {
+        declareDraw()
+        setTimeout(reloadGameboard, 1000)
     }
 }
 
@@ -92,13 +98,18 @@ function renderWinner(player) {
     turns.innerText = `${player.icon} won!`
 }
 
+function declareDraw() {
+    turns.innerText = `Draw!`
+}
+
 function reloadGameboard() {
     for(var i = 0; i < players.length; i++) {
-        if(players[i].hasWon === true) {
+        if(players[i].hasWon === true || players[i].plays.length === 5) {
             for(var child of gameBoard.children) {
                 child.innerText = ""
             }
             resetInitialValues()
+            renderTurnIcon()
         }
        
     }
@@ -110,5 +121,15 @@ function resetInitialValues() {
         for(var j = 0; j < players[i].plays.length; j++) {
             players[i].plays.splice(0, players[i].plays.length) 
         }
+    }
+}
+
+function renderWins(player) {
+    var win = player.wins
+    if(player.name === 'player1') {
+        winsPlayer1.innerText = `${win} wins!`
+    }
+    else {
+        winsPlayer2.innerText = `${win} wins!`
     }
 }
