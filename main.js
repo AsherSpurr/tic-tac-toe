@@ -44,8 +44,9 @@ function renderCellIcon(event) {
     var event = event.target.closest('div')
     for (var i = 0; i < players.length; i++) {
         if (players[0].hasWon === true || players[1].hasWon === true) {
+            // trackScore(players[i])
             break
-        } //break; //call on declare winner function then break inside that functio call on the reload gameboard
+        }
         if (players[i].isTurn === true && event.innerText === '') {
             event.innerText = `${players[i].icon}`
             players[i].plays.push(event.id)
@@ -82,18 +83,15 @@ function trackScore(player) {
                 player.hasWon = true
                 player.wins++
                 renderWinner(player)
-                // reloadGameboard()
+                setTimeout(reloadGameboard, 1000)
             }
-            if(player.hasWon === true) break;
         }
     }
 }
 
 function renderWinner(player) {
-            turns.innerText = `${player.icon} won!`
+    turns.innerText = `${player.icon} won!`
 }
-
-setTimeout(reloadGameboard, 4000)
 
 function reloadGameboard() {
     for(var i = 0; i < players.length; i++) {
@@ -101,6 +99,37 @@ function reloadGameboard() {
             for(var child of gameBoard.children) {
                 child.innerText = ""
             }
+            resetInitialValues()
+        }
+       
+    }
+}
+
+function resetInitialValues() {
+    for(var i = 0; i < players.length; i++) {
+        players[i].hasWon = false
+        for(var j = 0; j < players[i].plays.length; j++) {
+            players[i].plays.splice(0, players[i].plays.length) 
         }
     }
 }
+
+/*
+Bugs:
+    -GamePlay does not continue after gameBoard reset -- (issue w/ breaks?)
+        - Tried copying and pasting 
+    - Gameboard doesn't reset if leaf won
+        -FIXED -- NOT FIXED AFTER MOST RECENT CHANGES
+        - only allowing recet after caterpillar wins
+    - After a player has won, if a click is made after that, the other player will display as having 
+        won - even after board reset
+        -FIXED added lines 115 - 116 and moved resetInitialValues from inside the if statement to outside
+        -NOT FIXED -- tried mocing the aboce into the if statement and the board won't reload again
+
+    - after CATERPILLAR wins it properly resets and moves to the leave for the next game
+    - after LEAF wins it resets the board BUT the next click displays Ceterpillar won
+        THEN moves to the next play
+
+
+    -2nd playthrough doesn't reset the board
+*/
