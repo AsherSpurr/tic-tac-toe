@@ -1,9 +1,6 @@
-/* 
 
-
-*/
 /* JavaScript */
-// var timeout = setTimeout()
+
 
 var players = [
     {
@@ -48,7 +45,7 @@ function renderCellIcon(event) {
     for (var i = 0; i < players.length; i++) {
         if (players[0].hasWon === true || players[1].hasWon === true) {
             break
-        } //break; //call on declare winner function then break inside that functio call on the reload gameboard
+        }
         if (players[i].isTurn === true && event.innerText === '') {
             event.innerText = `${players[i].icon}`
             players[i].plays.push(event.id)
@@ -85,17 +82,33 @@ function trackScore(player) {
                 player.hasWon = true
                 player.wins++
                 renderWinner(player)
-
+                setTimeout(reloadGameboard, 1000)
             }
-            if(player.hasWon === true) break;
         }
     }
 }
 
 function renderWinner(player) {
-            turns.innerText = `${player.icon} won!`
+    turns.innerText = `${player.icon} won!`
 }
 
 function reloadGameboard() {
-    x
+    for(var i = 0; i < players.length; i++) {
+        if(players[i].hasWon === true) {
+            for(var child of gameBoard.children) {
+                child.innerText = ""
+            }
+            resetInitialValues()
+        }
+       
+    }
+}
+
+function resetInitialValues() {
+    for(var i = 0; i < players.length; i++) {
+        players[i].hasWon = false
+        for(var j = 0; j < players[i].plays.length; j++) {
+            players[i].plays.splice(0, players[i].plays.length) 
+        }
+    }
 }
