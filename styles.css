@@ -41,19 +41,20 @@ body {
 }
 
 .player {
-    font-size: 400%;
+    font-size: 350%;
     margin: 0;
+    margin-bottom: -.70em;
 }
 
 .wins {
-    font-size: 300%;
+    font-size: 320%;
     margin: 0;
     color: #7ea462;
 }
 
 /*Gameboard*/
 .turns {
-    font-size: 400%;
+    font-size: 350%;
     max-height: 20vh;
     margin-top: 5%;
     color: #7ea462;
