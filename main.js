@@ -28,6 +28,7 @@ var winningCombos = [
     ['cell3', 'cell5', 'cell7'],
 ]
 
+var welcomeMessage = document.querySelector('.welcome-message')
 var turns = document.querySelector('.turns')
 var gameBoard = document.querySelector('.gameboard-container')
 var winsPlayer1 = document.getElementById('player1-wins')
@@ -36,6 +37,13 @@ var winsPlayer2 = document.getElementById('player2-wins')
 gameBoard.addEventListener('click', (event) => {
     checkforPlay(event)
 });
+
+setTimeout(replaceDisplayMessage, 1500)
+
+function replaceDisplayMessage() {
+    turns.classList.remove('hidden')
+    welcomeMessage.classList.add('hidden')
+}
 
 function checkforPlay(event) {
     var event = event.target.closest('div')

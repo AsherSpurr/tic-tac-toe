@@ -1,12 +1,11 @@
-
 body {
     height: 100%;
     width: 100%;
     margin: 0;
     font-family: 'Bad Script';
+    color: #7ea462;
 }
 
-/*Columns*/
 .column {
     background-image: linear-gradient(#ebfdde, #d7edc6);
     height: 100vh;
@@ -32,7 +31,27 @@ body {
     justify-content: space-around;
 }
 
-/*Players*/
+.gameboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 444px;
+    height: 366px;
+    margin-bottom: 8em;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border-style: solid;
+    border-width: 4px;
+    border-image: radial-gradient(#bad8a4, #7ea462) 1;
+    height: 140px;
+    width: 140px;
+    font-size: 80px;
+}
+
 .player-box {
     display: flex;
     align-items: center;
@@ -49,74 +68,64 @@ body {
 .wins {
     font-size: 320%;
     margin: 0;
-    color: #7ea462;
 }
 
-/*Gameboard*/
+.welcome-message,
 .turns {
     font-size: 350%;
     max-height: 20vh;
     margin-top: 5%;
-    color: #7ea462;
 }
 
-.gameboard-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 444px;
-    height: 366px;
-    margin-bottom: 8em;
-}
 
-.cell {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    border-style: solid;
-    border-width: 4px;
-    border-image: radial-gradient( #bad8a4, #7ea462) 1;
-    height: 140px;
-    width: 140px;
-    font-size: 80px;
-}
+
+
+
 
 .cell:nth-child(1) {
     border-top: transparent;
     border-left: transparent;
 }
 
+
 .cell:nth-child(2) {
     border-top: transparent;
 }
+
 
 .cell:nth-child(3) {
     border-top: transparent;
     border-right: transparent;
 }
 
+
 .cell:nth-child(4) {
     border-left: transparent;
 }
 
+
 .cell:nth-child(6) {
     border-right: transparent;
 }
+
 
 .cell:nth-child(7) {
     border-left: transparent;
     border-bottom: transparent;
 }
 
+
 .cell:nth-child(8) {
     border-bottom: transparent;
 }
+
 
 .cell:nth-child(9) {
     border-bottom: transparent;
     border-right: transparent;
 }
 
-h1 {
+
+.hidden {
     display: none;
 }
