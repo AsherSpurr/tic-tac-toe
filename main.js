@@ -1,7 +1,3 @@
-
-/* JavaScript */
-
-
 var players = [
     {
         name: 'player1',
@@ -32,29 +28,36 @@ var winningCombos = [
     ['cell3', 'cell5', 'cell7'],
 ]
 
-/* HTML */
 var turns = document.querySelector('.turns')
 var gameBoard = document.querySelector('.gameboard-container')
 var winsPlayer1 = document.getElementById('player1-wins')
 var winsPlayer2 = document.getElementById('player2-wins')
 
 gameBoard.addEventListener('click', (event) => {
-    renderCellIcon(event)
+    checkforPlay(event)
 });
 
-function renderCellIcon(event) {
+function checkforPlay(event) {
     var event = event.target.closest('div')
     for (var i = 0; i < players.length; i++) {
         if (players[0].hasWon === true || players[1].hasWon === true) {
             break
         }
         if (players[i].isTurn === true && event.innerText === '') {
-            event.innerText = `${players[i].icon}`
-            players[i].plays.push(event.id)
+            renderCellIcon(event, players[i])
+            trackPlay(event, players[i])
             changeTurn()
-            trackScore(players[i])
+            trackWins(players[i])
         }
     }
+}
+
+function renderCellIcon(event, player) {
+    event.innerText = `${player.icon}`
+}
+
+function trackPlay(event, player) {
+    player.plays.push(event.id)
 }
 
 function changeTurn() {
@@ -72,14 +75,14 @@ function renderTurnIcon() {
     }
 }
 
-function trackScore(player) {
+function trackWins(player) {
     for (var i = 0; i < winningCombos.length; i++) {
         counter = 0;
-        for(var j = 0; j < player.plays.length; j++) {
+        for (var j = 0; j < player.plays.length; j++) {
             if (winningCombos[i].includes(player.plays[j])) {
                 counter++
             }
-            if(counter === 3) {
+            if (counter === 3) {
                 player.hasWon = true
                 player.wins++
                 renderWinner(player)
@@ -88,7 +91,11 @@ function trackScore(player) {
             }
         }
     }
-    if(player.plays.length === 5 && !player.hasWon) {
+    isDraw(player)
+}
+
+function isDraw(player) {
+    if (player.plays.length === 5 && !player.hasWon) {
         declareDraw()
         setTimeout(reloadGameboard, 1000)
     }
@@ -103,33 +110,31 @@ function declareDraw() {
 }
 
 function reloadGameboard() {
-    for(var i = 0; i < players.length; i++) {
-        if(players[i].hasWon === true || players[i].plays.length === 5) {
-            for(var child of gameBoard.children) {
+    for (var i = 0; i < players.length; i++) {
+        if (players[i].hasWon === true || players[i].plays.length === 5) {
+            for (var child of gameBoard.children) {
                 child.innerText = ""
             }
             resetInitialValues()
             renderTurnIcon()
         }
-       
+
     }
 }
 
 function resetInitialValues() {
-    for(var i = 0; i < players.length; i++) {
+    for (var i = 0; i < players.length; i++) {
         players[i].hasWon = false
-        for(var j = 0; j < players[i].plays.length; j++) {
-            players[i].plays.splice(0, players[i].plays.length) 
-        }
+        players[i].plays.splice(0, players[i].plays.length)
     }
 }
 
 function renderWins(player) {
     var win = player.wins
-    if(player.name === 'player1') {
-        winsPlayer1.innerText = `${win} wins!`
+    if (player.name === 'player1') {
+        winsPlayer1.innerText = `${win} wins`
     }
     else {
-        winsPlayer2.innerText = `${win} wins!`
+        winsPlayer2.innerText = `${win} wins`
     }
 }

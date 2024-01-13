@@ -7,18 +7,18 @@ body {
 }
 
 /*Columns*/
-.left-column {
+.column {
     background-image: linear-gradient(#ebfdde, #d7edc6);
-    float: left;
     height: 100vh;
     width: 25vw;
 }
 
-.right-column {
-    background-image: linear-gradient(#ebfdde, #d7edc6);
+#left-column {
+    float: left;
+}
+
+#right-column {
     float: right;
-    height: 100vh;
-    width: 25vw;
 }
 
 .game-play {
@@ -33,11 +33,11 @@ body {
 }
 
 /*Players*/
-
 .player-box {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin: 0;
 }
 
 .player {
@@ -52,7 +52,6 @@ body {
 }
 
 /*Gameboard*/
-
 .turns {
     font-size: 400%;
     max-height: 20vh;
@@ -66,7 +65,6 @@ body {
     width: 324px;
     height: 316px;
     margin: 0;
-    padding: 0;
 }
 
 .cell {
@@ -97,10 +95,6 @@ body {
 .cell:nth-child(4) {
     border-left: transparent;
 }
-
-/* .cell:nth-child(5) {
-    border-left: transparent;
-} */
 
 .cell:nth-child(6) {
     border-right: transparent;
