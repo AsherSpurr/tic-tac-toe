@@ -116,3 +116,7 @@ body {
     border-bottom: transparent;
     border-right: transparent;
 }
+
+h1 {
+    display: none;
+}
