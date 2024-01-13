@@ -87,7 +87,7 @@ function trackWins(player) {
                 player.wins++
                 renderWinner(player)
                 renderWins(player)
-                setTimeout(reloadGameboard, 1000)
+                setTimeout(reloadGameboard, 1500)
             }
         }
     }
@@ -97,7 +97,7 @@ function trackWins(player) {
 function isDraw(player) {
     if (player.plays.length === 5 && !player.hasWon) {
         declareDraw()
-        setTimeout(reloadGameboard, 1000)
+        setTimeout(reloadGameboard, 1500)
     }
 }
 
