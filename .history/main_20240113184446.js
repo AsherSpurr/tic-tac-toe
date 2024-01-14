@@ -34,7 +34,7 @@ var gameBoard = document.querySelector('.gameboard-container')
 var winsPlayer1 = document.getElementById('player1-wins')
 var winsPlayer2 = document.getElementById('player2-wins')
 
-window.addEventListener('load', refreshWins)
+window.addEventListener('load', refresh
 
 gameBoard.addEventListener('click', (event) => {
     checkforPlay(event)

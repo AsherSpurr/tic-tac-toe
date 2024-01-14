@@ -77,10 +77,22 @@ body {
     margin-top: 5%;
 }
 
+.reset-container {
+    display: flex;
+    align-items: end;
+    margin-top: 1em;
+   
+}
 
-
-
-
+.reset-button {
+    color: #ed7014;
+    height: 30px;
+    width: 90px;
+    border-radius: 25% 10%;
+    border: 1px transparent;
+    background-image: linear-gradient(0deg, #bad8a4, 70%, #d7edc6);
+    box-shadow: inset -1px -1px 1px 1px #7ea462;
+}
 
 .cell:nth-child(1) {
     border-top: transparent;

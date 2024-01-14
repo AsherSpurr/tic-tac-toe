@@ -34,7 +34,7 @@ var gameBoard = document.querySelector('.gameboard-container')
 var winsPlayer1 = document.getElementById('player1-wins')
 var winsPlayer2 = document.getElementById('player2-wins')
 
-window.addEventListener('load', refreshWins)
+window.addEventListener('load', storeWinsLocally)
 
 gameBoard.addEventListener('click', (event) => {
     checkforPlay(event)
@@ -122,7 +122,7 @@ function storeWinsLocally() {
         }
     }  
     console.log(`wins0: ${localStorage.wins0}`)
-    console.log(`wins1: ${localStorage.wins1}`)
+        console.log(`wins1: ${localStorage.wins1}`)
     refreshWins()
 }   
 

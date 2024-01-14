@@ -34,7 +34,7 @@ var gameBoard = document.querySelector('.gameboard-container')
 var winsPlayer1 = document.getElementById('player1-wins')
 var winsPlayer2 = document.getElementById('player2-wins')
 
-window.addEventListener('load', refreshWins)
+window.addEventListener('load', storeWinsLocally)
 
 gameBoard.addEventListener('click', (event) => {
     checkforPlay(event)
@@ -100,7 +100,7 @@ function trackWins(player) {
             }
             if (counter === 3) {
                 player.hasWon = true
-                // console.log(`line 102: ${player.wins}`)
+                console.log(`line 102: ${player.wins}`)
                 player.wins++
                 storeWinsLocally(player)
                 renderWinner(player)
@@ -115,14 +115,12 @@ function trackWins(player) {
 function storeWinsLocally() {
     for(var i = 0; i < players.length; i++) {
         if(players[i].name === 'player1') {
-            localStorage.setItem('wins0', players[i].wins)
+            localStorage.setItem('win0', players[i].wins)
         }
         else {
             localStorage.setItem('wins1', players[i].wins)
         }
     }  
-    console.log(`wins0: ${localStorage.wins0}`)
-    console.log(`wins1: ${localStorage.wins1}`)
     refreshWins()
 }   
 
@@ -174,9 +172,9 @@ function resetInitialValues() {
 
 function renderWins(player) {
     if (player.name === 'player1') {
-        winsPlayer1.innerText = `${players[0].wins} wins`
+        winsPlayer1.innerText = `${player[0].wins} wins`
     }
     else {
-        winsPlayer2.innerText = `${players[1].wins} wins`
+        winsPlayer2.innerText = `${win} wins`
     }
 }
