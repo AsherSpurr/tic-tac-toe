@@ -107,6 +107,7 @@ function trackWins(player) {
     }
     isDraw(player)
 }
+
 function storeWinsLocally() {
     for(var i = 0; i < players.length; i++) {
         if(players[i].name === 'player1') {

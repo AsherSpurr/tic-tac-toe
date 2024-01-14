@@ -48,8 +48,6 @@ function replaceDisplayMessage() {
 }
 
 function checkforPlay(event) {
-    localStorage.setItem('wins0', players[0].wins)
-    localStorage.setItem('wins1', players[1].wins)
     var event = event.target.closest('div')
     for (var i = 0; i < players.length; i++) {
         if (players[0].hasWon === true || players[1].hasWon === true) {
@@ -107,6 +105,7 @@ function trackWins(player) {
     }
     isDraw(player)
 }
+
 function storeWinsLocally() {
     for(var i = 0; i < players.length; i++) {
         if(players[i].name === 'player1') {

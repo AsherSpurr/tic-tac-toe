@@ -48,8 +48,6 @@ function replaceDisplayMessage() {
 }
 
 function checkforPlay(event) {
-    localStorage.setItem('wins0', players[0].wins)
-    localStorage.setItem('wins1', players[1].wins)
     var event = event.target.closest('div')
     for (var i = 0; i < players.length; i++) {
         if (players[0].hasWon === true || players[1].hasWon === true) {
@@ -107,24 +105,25 @@ function trackWins(player) {
     }
     isDraw(player)
 }
+
 function storeWinsLocally() {
-    for(var i = 0; i < players.length; i++) {
-        if(players[i].name === 'player1') {
+    for (var i = 0; i < players.length; i++) {
+        if (players[i].name === 'player1') {
             localStorage.setItem('wins0', players[i].wins)
         }
         else {
             localStorage.setItem('wins1', players[i].wins)
         }
-    }  
+    }
     console.log(`wins0: ${localStorage.wins0}`)
     console.log(`wins1: ${localStorage.wins1}`)
     refreshWins()
-}   
+}
 
 function refreshWins() {
-    var wins0 = parseInt(localStorage.getItem('wins0')) 
-    var wins1 = parseInt(localStorage.getItem('wins1')) 
-    
+    var wins0 = parseInt(localStorage.getItem('wins0'))
+    var wins1 = parseInt(localStorage.getItem('wins1'))
+
     players[0].wins = wins0
     players[1].wins = wins1
 
@@ -175,3 +174,4 @@ function renderWins(player) {
         winsPlayer2.innerText = `${players[1].wins} wins`
     }
 }
+

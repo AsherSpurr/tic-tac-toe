@@ -34,7 +34,7 @@ var gameBoard = document.querySelector('.gameboard-container')
 var winsPlayer1 = document.getElementById('player1-wins')
 var winsPlayer2 = document.getElementById('player2-wins')
 
-window.addEventListener('load', refreshWins)
+window.addEventListener('load', storeWinsLocally)
 
 gameBoard.addEventListener('click', (event) => {
     checkforPlay(event)
@@ -107,6 +107,7 @@ function trackWins(player) {
     }
     isDraw(player)
 }
+
 function storeWinsLocally() {
     for(var i = 0; i < players.length; i++) {
         if(players[i].name === 'player1') {
