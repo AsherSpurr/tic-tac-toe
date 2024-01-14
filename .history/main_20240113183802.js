@@ -34,11 +34,17 @@ var gameBoard = document.querySelector('.gameboard-container')
 var winsPlayer1 = document.getElementById('player1-wins')
 var winsPlayer2 = document.getElementById('player2-wins')
 
-window.addEventListener('load', refreshWins)
+window.addEventListener('load', storeWinsLocally)
 
 gameBoard.addEventListener('click', (event) => {
     checkforPlay(event)
 });
+
+// renderZeroWins()
+// function renderZeroWins() {
+//     winsPlayer1.innerText = `${players[0].wins} wins`
+//     winsPlayer2.innerText = `${players[1].wins} wins`
+// }
 
 setTimeout(replaceDisplayMessage, 1500)
 
@@ -48,8 +54,6 @@ function replaceDisplayMessage() {
 }
 
 function checkforPlay(event) {
-    localStorage.setItem('wins0', players[0].wins)
-    localStorage.setItem('wins1', players[1].wins)
     var event = event.target.closest('div')
     for (var i = 0; i < players.length; i++) {
         if (players[0].hasWon === true || players[1].hasWon === true) {
@@ -96,8 +100,9 @@ function trackWins(player) {
             }
             if (counter === 3) {
                 player.hasWon = true
+                console.log(`line 102: ${player.wins}`)
                 player.wins++
-                updateLocalData()
+                storeWinsLocally(player)
                 renderWinner(player)
                 renderWins(player)
                 setTimeout(reloadGameboard, 1500)
@@ -107,21 +112,23 @@ function trackWins(player) {
     isDraw(player)
 }
 
-function updateLocalData() {
+function storeWinsLocally() {
     for(var i = 0; i < players.length; i++) {
         if(players[i].name === 'player1') {
-            localStorage.setItem('wins0', players[i].wins)
+            localStorage.setItem('win0', players[i].wins)
         }
         else {
-            localStorage.setItem('wins1', players[i].wins)
+            localStorage.setItem('win1', players[i].wins)
         }
+        console.log(`wins0: ${win0}`)
+        console.log(`wins1: ${win1}`)
     }  
     refreshWins()
 }   
 
 function refreshWins() {
-    var wins0 = parseInt(localStorage.getItem('wins0')) 
-    var wins1 = parseInt(localStorage.getItem('wins1')) 
+    var win0 = parseInt(localStorage.getItem('win0')) 
+    var win1 = parseInt(localStorage.getItem('wins1')) 
     
     players[0].wins = wins0
     players[1].wins = wins1

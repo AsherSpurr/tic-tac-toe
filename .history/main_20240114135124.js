@@ -98,6 +98,7 @@ function trackWins(player) {
                 player.hasWon = true
                 player.wins++
                 updateLocalData()
+                // refreshWins()
                 renderWinner(player)
                 renderWins(player)
                 setTimeout(reloadGameboard, 1500)
@@ -116,6 +117,8 @@ function updateLocalData() {
             localStorage.setItem('wins1', players[i].wins)
         }
     }  
+    console.log(`wins0: ${localStorage.wins0}`)
+    console.log(`wins1: ${localStorage.wins1}`)
     refreshWins()
 }   
 

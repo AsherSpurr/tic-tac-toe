@@ -96,8 +96,10 @@ function trackWins(player) {
             }
             if (counter === 3) {
                 player.hasWon = true
+                // console.log(`line 102: ${player.wins}`)
                 player.wins++
-                updateLocalData()
+                // storeWinsLocally(player)
+                refreshWins(player)
                 renderWinner(player)
                 renderWins(player)
                 setTimeout(reloadGameboard, 1500)
@@ -106,28 +108,31 @@ function trackWins(player) {
     }
     isDraw(player)
 }
+// function storeWinsLocally() {
+//     for(var i = 0; i < players.length; i++) {
+//         if(players[i].name === 'player1') {
+//             localStorage.setItem('wins0', players[i].wins)
+//         }
+//         else {
+//             localStorage.setItem('wins1', players[i].wins)
+//         }
+//     }  
+//     console.log(`wins0: ${localStorage.wins0}`)
+//     console.log(`wins1: ${localStorage.wins1}`)
+//     refreshWins()
+// }   
 
-function updateLocalData() {
-    for(var i = 0; i < players.length; i++) {
-        if(players[i].name === 'player1') {
-            localStorage.setItem('wins0', players[i].wins)
-        }
-        else {
-            localStorage.setItem('wins1', players[i].wins)
-        }
-    }  
-    refreshWins()
-}   
-
-function refreshWins() {
+function refreshWins(player) {
     var wins0 = parseInt(localStorage.getItem('wins0')) 
     var wins1 = parseInt(localStorage.getItem('wins1')) 
-    
-    players[0].wins = wins0
-    players[1].wins = wins1
-
-    renderWins(players[0])
-    renderWins(players[1])
+    if(player.name === 'player1') {
+        player.wins = wins0
+    }
+    else {
+    player.wins = wins1
+    }
+    renderWins(player)
+    // renderWins(players[1])
 }
 
 function isDraw(player) {

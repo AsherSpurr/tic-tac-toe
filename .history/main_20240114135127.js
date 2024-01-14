@@ -116,6 +116,8 @@ function updateLocalData() {
             localStorage.setItem('wins1', players[i].wins)
         }
     }  
+    console.log(`wins0: ${localStorage.wins0}`)
+    console.log(`wins1: ${localStorage.wins1}`)
     refreshWins()
 }   
 
