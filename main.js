@@ -33,8 +33,11 @@ var turns = document.querySelector('.turns')
 var gameBoard = document.querySelector('.gameboard-container')
 var winsPlayer1 = document.getElementById('player1-wins')
 var winsPlayer2 = document.getElementById('player2-wins')
+var button = document.querySelector('.reset-button')
 
-window.addEventListener('load', refreshWins)
+button.addEventListener('click', resetGame)
+
+window.addEventListener('load', updateLocalData)
 
 gameBoard.addEventListener('click', (event) => {
     checkforPlay(event)
@@ -172,4 +175,10 @@ function renderWins(player) {
     else {
         winsPlayer2.innerText = `${players[1].wins} wins`
     }
+}
+
+function resetGame() {
+    console.log('click')
+    
+    localStorage.clear()
 }
