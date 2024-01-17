@@ -9,12 +9,7 @@ ______________________________________________________
 [//]: <>This game of Tic Tac Toe was my final project in week 6 of learning JavaScript. The highlights of this project were to maintain professional git flow, break up a large task into manageable chunks, create and follow a project planner, and finally work through the logic of a simple game to create a functioning web application for two-player Tic Tac Toe without outside assistance.
 
 ### Installation Instructions:
-[//]: <> - Clone the repository to your local machine
-        - run open index.html in your terminal
-        - To see my 2nd version git fetch the branch css-coloring
-        - checkout into this branch
-        - run open index.html in your terminal
-        - * A note about css-cloring branch. Please google trans egg before opening to understand the context
+[//]: <> Open this deploy link to see the game in action https://asherspurr.github.io/tic-tac-toe/
 
 ### Preview of App:
 [//]: <> ![Screenshot 2024-01-15 at 8 37 46 PM](https://github.com/AsherSpurr/tic-tac-toe/assets/144856487/41d580d0-333e-4561-bec1-aac28771c203)
