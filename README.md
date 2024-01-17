@@ -6,7 +6,7 @@ ______________________________________________________
 # Tic Tac Toe
 
 ### Abstract:
-This game of Tic Tac Toe was my final project in week 6 of learning JavaScript. The highlights of this project were to maintain professional git flow, break up a large task into manageable chunks, create and follow a project planner, and finally work through the logic of a simple game to create a functioning web application for two-player Tic Tac Toe without outside assistance.
+This game of Tic Tac Toe was my final project in week 6 of learning JavaScript at Turing School of Software and Design. The highlights of this project were to maintain professional git flow, break up a large task into manageable chunks, create and follow a project planner, and finally work through the logic of a simple game to create a functioning web application for two-player Tic Tac Toe without outside assistance.
 
 ### Installation Instructions:
 Open this deploy link to see the game in action https://asherspurr.github.io/tic-tac-toe/
@@ -30,5 +30,10 @@ Only I was working on this project. https://github.com/AsherSpurr
 - Use your problem solving process to break down large problems, solve things step by step, and trust yourself to not rely on an outside “answer” to a logical challenge
 
 ### Wins + Challenges:
-- A win was coming across a bug and backtracking to follow my logic and find the origin. 
-- One difficulty I faced was the extension using local storage, I decided I wanted a button to clear local storage if the user wanted a new game with new players. Adding this button pointed towards a possible flaw in my logic of how I was using the local storage. The extension was working before I cleared it, it now produces NaN values. Please check out the local-storage branch to take a look.
+Wins:
+  - Coming across a bug and being able to backtrack and follow my logic to find the origin.
+  - Breaking down large objectives into manageable sections
+  - Creating a detailed project planner and following it throughout the project
+  - Increased git flow
+Challenges:
+  - Implementing local storage into the program without bugs.
