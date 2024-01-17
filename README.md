@@ -6,7 +6,7 @@ ______________________________________________________
 # Tic Tac Toe
 
 ### Abstract:
-[//]: <>This game of Tic Tac Toe was my final project of Mod 1. The highlights of this project were to maintain professional git flow, break up a large task into manageable chunks, create and follow a project planner, and finally work through the logic of a simple game to create a functioning web application for two-player Tic Tac Toe without outside assistance.
+[//]: <>This game of Tic Tac Toe was my final project in week 6 of learning JavaScript. The highlights of this project were to maintain professional git flow, break up a large task into manageable chunks, create and follow a project planner, and finally work through the logic of a simple game to create a functioning web application for two-player Tic Tac Toe without outside assistance.
 
 ### Installation Instructions:
 [//]: <> - Clone the repository to your local machine
