@@ -30,10 +30,11 @@ Only I was working on this project. https://github.com/AsherSpurr
 - Use your problem solving process to break down large problems, solve things step by step, and trust yourself to not rely on an outside “answer” to a logical challenge
 
 ### Wins + Challenges:
-Wins:
+#### Wins:
   - Coming across a bug and being able to backtrack and follow my logic to find the origin.
   - Breaking down large objectives into manageable sections
   - Creating a detailed project planner and following it throughout the project
   - Increased git flow
-Challenges:
+
+#### Challenges:
   - Implementing local storage into the program without bugs.
